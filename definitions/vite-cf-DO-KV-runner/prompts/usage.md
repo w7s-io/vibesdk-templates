@@ -3,9 +3,9 @@
 > Deprecated template. Prefer `vite-cf-DO-v2-runner` or `vite-cf-DO-runner`.
 
 ## Overview
-Workers + React with Durable Objects (DO) + KV. Type-safe APIs with mock fallback.
+W7S fullstack React app with stateful object and KV bindings. Type-safe APIs with mock fallback.
 - Frontend: React Router 6 + TypeScript + ShadCN UI
-- Backend: Hono Worker with DO + KV
+- Backend: Hono native backend with W7S stateful object + KV
 - Shared: Types in `shared/types.ts`
 
 ## ⚠️ IMPORTANT: Demo Content

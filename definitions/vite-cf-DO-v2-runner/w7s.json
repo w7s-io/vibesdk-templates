@@ -1,0 +1,10 @@
+{
+  "bindings": {
+    "durableObjects": [
+      {
+        "binding": "GlobalDurableObject",
+        "className": "GlobalDurableObject"
+      }
+    ]
+  }
+}

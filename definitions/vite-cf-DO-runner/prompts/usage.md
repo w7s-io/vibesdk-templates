@@ -1,9 +1,9 @@
 # Usage
 
 ## Overview
-Cloudflare Workers + React. Single global Durable Object (DO) for all persistence and DO features.
+W7S fullstack React app with a single global stateful object for persistence.
 - Frontend: React Router 6 + TypeScript + ShadCN UI
-- Backend: Hono Worker with one DO
+- Backend: Hono native backend with one W7S stateful object
 - Shared: Types in `shared/types.ts`
 
 ## ⚠️ IMPORTANT: Demo Content
@@ -22,7 +22,7 @@ Cloudflare Workers + React. Single global Durable Object (DO) for all persistenc
 - **Icons**: Import from `lucide-react` directly
 - **Error Handling**: ErrorBoundary components are pre-implemented
 - **Worker Patterns**: Follow exact patterns in `worker/index.ts` to avoid breaking functionality
-- **CRITICAL**: You CANNOT modify `wrangler.jsonc` - only use the single `GlobalDurableObject` binding
+- **CRITICAL**: You CANNOT modify `w7s.json` - only use the single `GlobalDurableObject` binding
 
 ## Styling
 - Responsive, accessible
@@ -96,10 +96,10 @@ async addMyData(item: MyType): Promise<MyType[]> {
 
 ## Bindings
 CRITICAL: only `GlobalDurableObject` is available for stateful ops
-**IMPORTANT: You are NOT ALLOWED to edit/add/remove ANY worker bindings OR touch wrangler.jsonc/wrangler.toml. Build your application around what is already provided.**
+**IMPORTANT: You are NOT ALLOWED to edit/add/remove ANY backend bindings OR touch w7s.json. Build your application around what is already provided.**
 
 **YOU CANNOT**:
-- Modify `wrangler.jsonc` 
+- Modify `w7s.json`
 - Add new Durable Objects or KV namespaces
 - Change binding names or add new bindings
 ## Storage Patterns

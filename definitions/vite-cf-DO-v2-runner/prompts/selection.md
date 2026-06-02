@@ -1,6 +1,6 @@
 # Template Selection
 
-General-purpose multi-entity storage on Cloudflare Workers using one Durable Object (DO) as the storage backend. The DO is wrapped so multiple entities (users, chats, orgs, etc.) can persist data via simple APIs.
+General-purpose multi-entity storage on W7S using one stateful object as the storage backend. The object is wrapped so multiple entities (users, chats, orgs, etc.) can persist data via simple APIs.
 
 Use when:
 - Backend-heavy apps with multiple entities and server-side persistence
@@ -17,6 +17,5 @@ Note: No direct DO access. DO is storage-only; no alarms or extra DO features.
 
 Built with:
 - React Router, ShadCN UI, Tailwind, Lucide Icons, ESLint, Vite
-- Cloudflare Workers + a single DO for persistence
-
+- W7S native backend + a single stateful object for persistence
 

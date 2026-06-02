@@ -7,6 +7,7 @@ import { Env } from "./core-utils";
 import { API_RESPONSES } from "./config";
 import { ChatAgent } from "./agent";
 import { AppController } from "./app-controller";
+import { coreRoutes, userRoutes } from "./userRoutes";
 export { ChatAgent, AppController };
 export interface ClientErrorReport {
   message: string;
@@ -23,35 +24,14 @@ export interface ClientErrorReport {
   error?: unknown;
 }
 
-type UserRoutesModule = {
-  userRoutes: (app: Hono<{ Bindings: Env }>) => void;
-  coreRoutes: (app: Hono<{ Bindings: Env }>) => void;
-};
-
 let userRoutesLoaded = false;
-let userRoutesLoadError: string | null = null;
-
-const RETRY_MS = 750;
-let nextRetryAt = 0;
 
 const safeLoadUserRoutes = async (app: Hono<{ Bindings: Env }>) => {
   if (userRoutesLoaded) return;
 
-  const now = Date.now();
-  const shouldRetry = userRoutesLoadError !== null;
-  if (shouldRetry && now < nextRetryAt) return;
-  nextRetryAt = now + RETRY_MS;
-
-  try {
-    const spec = shouldRetry ? `./userRoutes?t=${now}` : "./userRoutes";
-    const mod = (await import(/* @vite-ignore */ spec)) as UserRoutesModule;
-    mod.userRoutes(app);
-    mod.coreRoutes(app);
-    userRoutesLoaded = true;
-    userRoutesLoadError = null;
-  } catch (e) {
-    userRoutesLoadError = e instanceof Error ? e.message : String(e);
-  }
+  userRoutes(app);
+  coreRoutes(app);
+  userRoutesLoaded = true;
 };
 
 const app = new Hono<{ Bindings: Env }>();
@@ -115,16 +95,6 @@ export default {
 
     if (pathname.startsWith("/api/") && pathname !== "/api/health" && pathname !== "/api/client-errors") {
       await safeLoadUserRoutes(app);
-      if (userRoutesLoadError) {
-        return new Response(
-          JSON.stringify({
-            success: false,
-            error: "Worker routes failed to load",
-            detail: userRoutesLoadError,
-          }),
-          { status: 500, headers: { "content-type": "application/json" } },
-        );
-      }
     }
 
     return app.fetch(request, env, ctx);

@@ -7,7 +7,7 @@ Runtime JSX compilation with zero build steps. Clean 3-file architecture for eas
 - React 18 + Reveal.js 5 + Babel Standalone (browser JSX compilation)
 - Tailwind CSS (CDN) + Glass morphism design
 - Recharts + Lucide icons
-- Cloudflare Workers backend
+- Static W7S deployment through the included GitHub Actions workflow
 
 ## File Structure
 

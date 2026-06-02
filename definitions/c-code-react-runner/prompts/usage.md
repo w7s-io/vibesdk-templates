@@ -2,7 +2,7 @@
 
 ## Built with
 - React Router 6, ShadCN UI, Tailwind, Lucide Icons, ESLint, Vite
-- Cloudflare Workers (serving/server-side when needed)
+- W7S native JavaScript/TypeScript backend support when `worker/index.ts` is used
 
 ## Restrictions
 - Tailwind: define custom colors in `tailwind.config.js` (not in `index.css`)
@@ -36,7 +36,8 @@ export function Example() {
 ```
 
 ## Backend (optional)
-- If you add Worker routes, do it in `worker/index.ts`. Follow the existing pattern carefully to avoid breakage.
+- If you add backend routes, do it in `worker/userRoutes.ts`. Follow the existing `worker/index.ts` pattern carefully to avoid breakage.
+- The included GitHub Actions workflow runs `npm run build` before `w7s-io/w7s-cloud@v1`, producing `dist/` for static assets and `worker/index.js` for the bundled backend.
 
 ---
 

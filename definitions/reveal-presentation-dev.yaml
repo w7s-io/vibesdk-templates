@@ -19,6 +19,10 @@ package_patches:
     prettier: "^3"
     wrangler: "^4.47.0"
 
+excludes:
+  - "worker/**"
+  - "scripts/**"
+
 template_specific_files:
   - .editorconfig
   - .prettierrc

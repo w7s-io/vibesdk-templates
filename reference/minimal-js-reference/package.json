@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "bun scripts/dev.ts",
-    "build": "wrangler build",
-    "deploy": "wrangler deploy",
+    "build": "rm -rf dist && cp -R public dist",
+    "deploy": "npm run build",
     "lint": "eslint --cache -f json --quiet ."
   },
   "dependencies": {

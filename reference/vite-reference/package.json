@@ -5,10 +5,10 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite --host 0.0.0.0 --port ${PORT:-3000}",
-		"build": "vite build",
+		"build": "vite build && esbuild worker/index.ts --bundle --format=esm --platform=browser --target=es2022 --external:cloudflare:workers --outfile=worker/index.js",
 		"lint": "eslint --cache -f json --quiet .",
 		"preview": "bun run build && vite preview --host 0.0.0.0 --port ${PORT:-4173}",
-		"deploy": "bun run build && wrangler deploy",
+		"deploy": "npm run build",
 		"cf-typegen": "wrangler types"
 	},
 	"dependencies": {
@@ -89,6 +89,7 @@
 		"@types/react-dom": "^18.3.1",
 		"@vitejs/plugin-react": "^4.3.4",
 		"autoprefixer": "^10.4.21",
+		"esbuild": "^0.25.4",
 		"eslint": "^9.31.0",
 		"eslint-plugin-react-hooks": "^5.2.0",
 		"eslint-plugin-react-refresh": "^0.4.19",

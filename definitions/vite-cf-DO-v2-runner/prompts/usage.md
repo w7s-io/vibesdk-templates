@@ -1,9 +1,9 @@
 # Usage
 
 ## Overview
-Cloudflare Workers + React. Storage via a single Durable Object (DO) powered library to support multiple entities on a single DO.
+W7S fullstack React app. Storage uses a single stateful object powered library to support multiple entities on one object binding.
 - Frontend: React Router 6 + TypeScript + ShadCN UI
-- Backend: Hono Worker; persistence through one DO (no direct DO access)
+- Backend: Hono native backend; persistence through one W7S stateful object
 - Shared: Types in `shared/types.ts`
 
 ## ⚠️ IMPORTANT: Demo Content
@@ -22,8 +22,8 @@ Cloudflare Workers + React. Storage via a single Durable Object (DO) powered lib
 - **Icons**: Import from `lucide-react` directly
 - **Error Handling**: ErrorBoundary components are pre-implemented
 - **Worker Patterns**: Follow exact patterns in `worker/index.ts` to avoid breaking functionality
-- **CRITICAL**: You CANNOT modify `wrangler.jsonc` - only use the single `GlobalDurableObject` binding
-- **CRITICAL**: You CANNOT modify `worker/core-utils.ts` - it is a library to abstract durable object operations, handcrafted by a team of experts at Cloudflare
+- **CRITICAL**: You CANNOT modify `w7s.json` - only use the single `GlobalDurableObject` binding
+- **CRITICAL**: You CANNOT modify `worker/core-utils.ts` - it is a library to abstract stateful object operations
 
 ## Styling
 - Responsive, accessible
@@ -72,10 +72,10 @@ app.post('/api/users', async (c) => {
 ## Bindings
 CRITICAL: only `GlobalDurableObject` is available for stateful ops and is managed by our custom library. It is not to be modified or accessed directly in any way.
 
-**IMPORTANT: You are NOT ALLOWED to edit/add/remove ANY worker bindings OR touch wrangler.jsonc/wrangler.toml. Build your application around what is already provided.**
+**IMPORTANT: You are NOT ALLOWED to edit/add/remove ANY backend bindings OR touch w7s.json. Build your application around what is already provided.**
 
 **YOU CANNOT**:
-- Modify `wrangler.jsonc` 
+- Modify `w7s.json`
 - Add new Durable Objects or KV namespaces
 - Change binding names or add new bindings
 

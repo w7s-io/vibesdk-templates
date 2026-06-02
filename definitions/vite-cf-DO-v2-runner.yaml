@@ -14,5 +14,5 @@ excludes:
 file_patches:
   - file: "worker/index.ts"
     replacements:
-      - find: "const USER_ROUTES_MODULE = './userRoutes';"
-        replace: "const USER_ROUTES_MODULE = './user-routes';"
+      - find: "import { userRoutes } from './userRoutes';"
+        replace: "import { userRoutes } from './user-routes';"

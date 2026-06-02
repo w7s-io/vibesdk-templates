@@ -1,6 +1,6 @@
 # Template Selection
 
-Single Durable Object (DO) app on Cloudflare Workers. Minimal setup that uses one global DO for persistence and DO features.
+Single stateful object app on W7S. Minimal setup that uses one global object for persistence and stateful features.
 
 Use when:
 - You need server-side state with one global DO
@@ -13,6 +13,5 @@ Avoid when:
 
 Built with:
 - React Router, ShadCN UI, Tailwind, Lucide Icons, ESLint, Vite
-- Cloudflare Workers + single DO for persistence
-
+- W7S native backend + single stateful object for persistence
 

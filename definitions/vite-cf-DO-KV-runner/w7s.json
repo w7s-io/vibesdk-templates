@@ -1,0 +1,13 @@
+{
+  "bindings": {
+    "durableObjects": [
+      {
+        "binding": "GlobalDurableObject",
+        "className": "GlobalDurableObject"
+      }
+    ],
+    "kv": [
+      "KVStore"
+    ]
+  }
+}
